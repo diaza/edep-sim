@@ -10,6 +10,8 @@ file(GLOB captain_source captain/*.cc)
 file(GLOB captain_includes captain/EDepSim*.hh)
 file(GLOB kinem_source kinem/*.cc)
 file(GLOB kinem_includes kinem/EDepSim*.hh)
+file(GLOB lists_source lists/*.cc)
+file(GLOB lists_includes lists/*.hh)
 
 if(EDEPSIM_USE_NEST)
   file(GLOB nest_source NESTVersion098/*.cc)
@@ -19,8 +21,8 @@ else(EDEPSIM_USE_NEST)
   add_definitions(-DEDEPSIM_SKIP_NESTVersion098)
 endif(EDEPSIM_USE_NEST)
 
-set(source ${edep_source} ${captain_source} ${kinem_source} ${nest_source})
-set(includes ${edep_includes} ${captain_includes} ${kinem_includes})
+set(source ${edep_source} ${captain_source} ${kinem_source} ${nest_source} ${lists_source})
+set(includes ${edep_includes} ${captain_includes} ${kinem_includes} ${lists_includes})
 
 # Where the macro files can be found.
 add_definitions(-DDETSIM_INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\")
