@@ -8,6 +8,19 @@ class G4VPhysicsConstructor;
 namespace EDepSim {class PhysicsListMessenger;}
 namespace EDepSim {class ExtraPhysics;}
 
+
+template<typename T>
+std::ostream& operator<<(std::ostream& s, const std::vector<T>& v)
+{
+    s.put('[');
+    char comma[3] = {'\0', ' ', '\0'};
+    for (const auto& e : v) {
+        s << comma << e;
+        comma[0] = ',';
+    }
+    return s << ']';
+}
+
 /// Use the G4PhysListFactory to select a physics list for this run.  The
 /// physics list can be set from the PHYSLIST environment variable, or a macro
 /// file.  All of the physics lists need to be defined before using the
@@ -45,6 +58,10 @@ public:
     void SetIonizationModel(bool);
     
 private:
+
+    // The physics list requested in the constructor, if any
+    G4String fPhysicsListName;
+
 
     /// The gamma-ray range cut.
     G4double fCutForGamma;
