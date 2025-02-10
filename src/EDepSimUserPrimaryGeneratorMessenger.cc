@@ -24,6 +24,7 @@
 #include "kinem/EDepSimFixedTimeFactory.hh"
 #include "kinem/EDepSimFreeTimeFactory.hh"
 #include "kinem/EDepSimSpillTimeFactory.hh"
+#include "kinem/EDepSimUniformTimeFactory.hh"
 
 
 #include <G4UIdirectory.hh>
@@ -81,6 +82,7 @@ EDepSim::UserPrimaryGeneratorMessenger::UserPrimaryGeneratorMessenger(
     AddTimeFactory(new EDepSim::FixedTimeFactory(this));
     AddTimeFactory(new EDepSim::FreeTimeFactory(this));
     AddTimeFactory(new EDepSim::SpillTimeFactory(this));
+    AddTimeFactory(new EDepSim::UniformTimeFactory(this));
 
     /////////////////////////////////////////
     // The UI commands must be created after the factories.
